@@ -18,8 +18,8 @@ def createKeyPair ():
       input("Press enter to continue...")
       screenfun.clear()
     elif choice == "3":
-      break
-  
+      return keys
+
 def fastmod2 (numb, expo, mod, expos):
   x=1
   store= numb%mod
@@ -101,8 +101,25 @@ def genKeys(p=None,q=None):
   privkey = [int(d),n]
   return pubkey, privkey
 
-def encrypt(m,e,n):
-  return fastmodany(m,n,e)
+def lettersToNumbers(text):
+  num = ""
+  for character in text:
+    if ord(character)//100 == 0:
+      num += "0" + str(ord(character))
+    else:
+      num += str(ord(character))
+  return int(num)
 
-def decrpyt(c,d,n):
-  return fastmodany(c,n,d)
+def numberToLetters (num):
+    message = ""
+    num = list(str(num))
+    while num != []:
+        message += chr((int(num.pop(0))*100) + (int(num.pop(0))*10) + (int(num.pop(0))))
+    return message
+
+def encrypt(message,e,n):
+  message = lettersToNumbers(message)
+  return fastmodany(message,n,e)
+
+def decrpyt(cyphertext,d,n):
+  return numberToLetters(fastmodany(int(cyphertext),n,d))
