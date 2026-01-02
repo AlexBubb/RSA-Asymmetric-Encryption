@@ -112,7 +112,10 @@ def lettersToNumbers(text):
 
 def numberToLetters (num):
     message = ""
-    num = list(str(num))
+    s = str(num)
+    while len(s) % 3 != 0:
+      s = "0" + s
+    num = list(s)
     while num != []:
         message += chr((int(num.pop(0))*100) + (int(num.pop(0))*10) + (int(num.pop(0))))
     return message
