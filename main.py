@@ -58,6 +58,7 @@ while True:
     elif choice == "4":
         if (keys[0] != []):
             print(rsafun.encrypt(input("What would you like to encrypt: "), keys[0][0], keys[0][1]))
+            input("Press enter to continue...")
         else:
             print("Please generate or import a public key in order to encrypt.")
             input("Press enter to continue...")
@@ -65,6 +66,7 @@ while True:
     elif choice == "5":
         if (keys[1] != []):
             print(rsafun.decrpyt(input("What would you like to dencrypt: "), keys[1][0], keys[1][1]))
+            input("Press enter to continue...")
         else:
             print("Please generate or import a private key in order to decrpyt.")
             input("Press enter to continue...")
